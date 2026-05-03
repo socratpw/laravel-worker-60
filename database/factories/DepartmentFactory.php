@@ -5,7 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Department>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
 class DepartmentFactory extends Factory
 {
@@ -17,7 +17,7 @@ class DepartmentFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => fake('ru_RU')->jobTitle(),
+            'name' => fake('ru_RU')->jobTitle(),
 
 
         ];

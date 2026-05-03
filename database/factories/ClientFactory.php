@@ -2,13 +2,12 @@
 
 namespace Database\Factories;
 
-use App\Models\Department;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Position>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Client>
  */
-class PositionFactory extends Factory
+class ClientFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,8 +17,8 @@ class PositionFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => fake('ru_RU')->jobTitle(),
-            'department_id' => Department::inRandomOrder()->first()->id,
+            'name' => fake('ru_RU')->name(),
+
 
         ];
     }

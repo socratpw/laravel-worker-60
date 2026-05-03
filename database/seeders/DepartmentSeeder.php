@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Department;
+use App\Models\Profile;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DepartmentSeeder extends Seeder
@@ -12,6 +14,7 @@ class DepartmentSeeder extends Seeder
      */
     public function run(): void
     {
-        Department::factory(3)->create();
+        Department::factory(2)->create();
+
     }
 }

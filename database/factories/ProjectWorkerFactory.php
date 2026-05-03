@@ -2,13 +2,15 @@
 
 namespace Database\Factories;
 
+use App\Models\Position;
+use App\Models\Project;
 use App\Models\Worker;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Profile>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
-class ProfileFactory extends Factory
+class ProjectWorkerFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,9 +20,9 @@ class ProfileFactory extends Factory
     public function definition(): array
     {
         return [
-            'worker_id' => Worker::factory()->create()->id,
-            'country' => fake('ru_RU')->country(),
-            'city' => fake('ru_RU')->city(),
+            'project_id' => Project::inRandomOrder()->first()->id,
+            'worker_id' => Worker::inRandomOrder()->first()->id,
+
 
         ];
     }
