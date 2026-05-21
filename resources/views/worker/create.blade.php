@@ -5,7 +5,7 @@
 Create page
 <hr>
 <div>
-    <form action="{{route('worker.store')}}" method="post"> <style>input, textarea {border: 2px #000 solid; margin-bottom: 10px;}</style>
+    <form action="{{route('workers.store')}}" method="post"> <style>input, textarea {border: 2px #000 solid; margin-bottom: 10px;}</style>
        @csrf
         <input type="text" name="name" placeholder="name" value="{{old('name')}}">
         @error('name')
@@ -46,7 +46,7 @@ Create page
 
     <hr>
     <div>
-        <a href="{{route('worker.index')}}">Назад</a>
+        <a href="{{route('workers.index')}}">Назад</a>
     </div>
 
 </div>

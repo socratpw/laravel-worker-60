@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('email');
             $table->integer('age')->nullable();
             $table->text('description')->nullable();
+           $table->softDeletes();
+
             $table->boolean('is_married')->default(false);
 
 

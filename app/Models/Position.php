@@ -24,8 +24,7 @@ class Position extends Model
 
     public function old()
     {
-        return $this->hasOne(Worker::class)
-            ->where('name', 'Дмитрий' );
+        return $this->hasOne(Worker::class);
     }
 
 

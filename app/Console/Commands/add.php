@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Console\Commands;
+use App\Http\Filters\Var1\WorkerFilter;
 use App\Models\Client;
 
 use App\Models\Avatar;
@@ -12,6 +13,7 @@ use App\Models\Tag;
 use App\Models\Worker;
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
+use App\Jobs\SendMailJob;
 
 class add extends Command
 {
@@ -38,26 +40,24 @@ class add extends Command
 //        $this->start();
 
 
+        $bill = Worker::query(); // Создал билдер
 
-        $position = Position::find(4);
+        $filter = new WorkerFilter(['age' => 22, 'to' => 33]);  // Это параметры фильтра
 
-        dd($position->old->toArray());
+        $filter->applyFilter($bill); // Создаю фильтр и закидываю туда Билдер
 
-
-//        $tag = Tag::find(1);
-////
-//        dd($tag->clients->toArray());
-////
+        dd($bill->get()->toArray()); // Это по идее не фильтр а что?
 
 
 
 
 
 
+
+        return 0;
 
 
     }
-
 
     public function start()
     {

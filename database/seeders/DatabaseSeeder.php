@@ -11,7 +11,7 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    use WithoutModelEvents;
+//    use WithoutModelEvents;
 
     /**
      * Seed the application's database.
@@ -22,7 +22,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             DepartmentSeeder::class,
             PositionSeeder::class,
-            ProfileSeeder::class,
+            WorkerSeeder::class,
+//            ProfileSeeder::class,
             ProjectSeeder::class,
             ProjectWorkerSeeder::class,
             ClientSeeder::class,

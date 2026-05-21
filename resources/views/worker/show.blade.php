@@ -13,7 +13,7 @@ Index
             <div>{{$worker->is_married}}</div>
         </div>
         <div>
-            <a href="{{route('worker.index')}}">НАЗАД</a>
+            <a href="{{route('workers.index')}}">НАЗАД</a>
         </div>
             <hr>
 </div>

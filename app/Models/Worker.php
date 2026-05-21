@@ -2,14 +2,38 @@
 
 namespace App\Models;
 
+use App\Events\Worker\CreateEvent;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Worker extends Model
 {
     use HasFactory;
+    use SoftDeletes;
+
     protected $table = 'workers';
     protected $guarded = false;
+
+    protected static function booted()
+    {
+        static::created(function ($worker) {
+            event(new CreateEvent($worker));
+        });
+
+        static::updated(function ($worker) {
+
+            if ($worker->wasChanged() && (int) $worker->getOriginal('age') != (int) $worker->getAttributes()['age']) {
+                //
+            }
+
+
+        });
+
+
+    }
+
+
 
 
     public function profile()

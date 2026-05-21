@@ -20,11 +20,11 @@ class WorkerFactory extends Factory
         return [
             'name' => fake('ru_RU')->firstName(),
             'position_id' => Position::inRandomOrder()->first()->id,
-
             'surname' => fake('ru_RU')->lastName(),
             'email' => fake('ru_RU')->unique()->email(),
             'age' => fake('ru_RU')->numberBetween(15, 55),
             'description' => fake('ru_RU')->realText(),
+            'is_married' => fake('ru_RU')->numberBetween(0, 1),
 
 
         ];

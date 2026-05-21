@@ -4,7 +4,7 @@
 Create page
 <hr>
 <div>
-    <form action="{{route('worker.update', $worker->id)}}" method="post"> <style>input, textarea {border: 2px #000 solid; margin-bottom: 10px;}</style>
+    <form action="{{route('workers.update', $worker->id)}}" method="post"> <style>input, textarea {border: 2px #000 solid; margin-bottom: 10px;}</style>
        @csrf
         @method('Patch')
         <input type="text" name="name" placeholder="name" value="{{old('name') ?? $worker->name}}">
@@ -41,7 +41,7 @@ Create page
     </form>
     <hr>
     <div>
-        <a href="{{route('worker.index')}}">Назад</a>
+        <a href="{{route('workers.index')}}">Назад</a>
     </div>
 
 </div>
