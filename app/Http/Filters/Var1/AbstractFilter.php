@@ -4,7 +4,7 @@ namespace App\Http\Filters\Var1;
 
 use Illuminate\Database\Eloquent\Builder;
 
-abstract class AbstractFilter
+abstract class AbstractFilter implements FilterInterface
 {
     private array $params = [];
 

@@ -3,25 +3,41 @@
 namespace App\Http\Controllers;
 
 use App\Http\Filters\Var1\WorkerFilter;
+use App\Http\Filters\Var2\Worker\AgeFrom;
+use App\Http\Filters\Var2\Worker\AgeTo;
+use App\Http\Filters\Var2\Worker\Name;
 use App\Http\Requests\Worker\IndexRequest;
 use App\Http\Requests\Worker\StoreRequest;
 use App\Http\Requests\Worker\UpdateRequest;
 use http\QueryString;
 use Illuminate\Http\Request;
 use App\Models\Worker;
+use Illuminate\Pipeline\Pipeline;
 
 class WorkerController extends Controller
 {
 
     public function index(IndexRequest $request)
     {
-        $data = $request->validated(); // Данные запроса отвалидированные
+//        $data = $request->validated(); // Данные запроса отвалидированные
+////      $filter = new WorkerFilter($data);  // Это параметры фильтра
 
-        $workerQuery = Worker::query(); // Создал билдер
-        $filter = new WorkerFilter($data);  // Это параметры фильтра
-        $filter->applyFilter($workerQuery); // Создаю фильтр и закидываю туда Билдер
-//        dd($bill->get()->toArray()); // Модифицированный запрос, но мы тут используем пагинатор.
-        $workers = $workerQuery->paginate(4);
+
+        $workers = app()->make(Pipeline::class)
+            ->send(Worker::query())
+            ->through([
+                AgeFrom::class,
+                AgeTo::class,
+                Name::class,
+            ]) // Означает - пройди по след. фильтрам
+            ->thenReturn();
+
+
+//        $filter = app()->make(WorkerFilter::class, ['params' => $data]);
+//        $workerQuery = Worker::filter($filter);
+
+
+        $workers = $workers->paginate(4);
 
 
 

@@ -3,6 +3,9 @@
 namespace App\Models;
 
 use App\Events\Worker\CreateEvent;
+use App\Http\Filters\Var1\AbstractFilter;
+use App\Models\Traits\HasFilter;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -11,11 +14,16 @@ class Worker extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    use HasFilter;
 
     protected $table = 'workers';
     protected $guarded = false;
 
-    protected static function booted()
+
+
+
+
+protected static function booted()
     {
         static::created(function ($worker) {
             event(new CreateEvent($worker));

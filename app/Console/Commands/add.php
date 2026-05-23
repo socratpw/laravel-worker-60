@@ -2,7 +2,11 @@
 
 namespace App\Console\Commands;
 use App\Http\Filters\Var1\WorkerFilter;
+use App\Http\Filters\Var2\Worker\AgeTo;
+use App\Http\Filters\Var2\Worker\Name;
 use App\Models\Client;
+use App\Http\Filters\Var2\Age;
+use App\Http\Filters\Var2\Worker\AgeFrom;
 
 use App\Models\Avatar;
 use App\Models\Department;
@@ -12,6 +16,7 @@ use App\Models\Review;
 use App\Models\Tag;
 use App\Models\Worker;
 use Illuminate\Console\Command;
+use Illuminate\Pipeline\Pipeline;
 use Illuminate\Support\Collection;
 use App\Jobs\SendMailJob;
 
@@ -40,21 +45,15 @@ class add extends Command
 //        $this->start();
 
 
-        $bill = Worker::query(); // Создал билдер
-
-        $filter = new WorkerFilter(['age' => 22, 'to' => 33]);  // Это параметры фильтра
-
-        $filter->applyFilter($bill); // Создаю фильтр и закидываю туда Билдер
-
-        dd($bill->get()->toArray()); // Это по идее не фильтр а что?
-
-
-
-
-
 
 
         return 0;
+
+
+
+
+
+
 
 
     }
